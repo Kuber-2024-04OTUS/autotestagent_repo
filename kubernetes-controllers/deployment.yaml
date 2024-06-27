@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homework-deployment
+  namespace: homework
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: homework
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: homework
+    spec:
+      containers:
+      - name: web-server
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: shared-data
+          mountPath: /usr/share/nginx/html
+        readinessProbe:
+          exec:
+            command: ["test", "-f", "/usr/share/nginx/html/index.html"]
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "rm -f /usr/share/nginx/html/index.html"]
+      initContainers:
+      - name: init-container
+        image: busybox
+        command: ['sh', '-c', 'echo "<h1>Hello, Kubernetes!</h1>" > /init/index.html']
+        volumeMounts:
+        - name: shared-data
+          mountPath: /init
+      volumes:
+      - name: shared-data
+        emptyDir: {}
