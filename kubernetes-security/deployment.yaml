@@ -17,7 +17,7 @@ spec:
       labels:
         app: homework
     spec:
-      serviceAccountName: monitoring  
+      serviceAccountName: monitoring
       containers:
       - name: web-server
         image: nginx:latest
@@ -41,7 +41,7 @@ spec:
       initContainers:
       - name: init-container
         image: busybox
-        command: ['sh', '-c', 'echo "<h1>Hello, Kubernetes!</h1>" > /usr/share/nginx/html/index.html']
+        command: ['sh', '-c', 'echo "<h1>Hello, Kubernetes!</h1>" > /usr/share/nginx/html/index.html && wget -qO- http://homework.otus/metrics &> /usr/share/nginx/html/metrics.html']
         volumeMounts:
         - name: pvc-data
           mountPath: /usr/share/nginx/html

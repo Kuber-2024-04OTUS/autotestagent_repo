@@ -86,3 +86,20 @@ homework-deployment-b5ddfb455-pn7r5   0/1     Running   0          73m
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
+
+
+поменять команду для init сонтейнера
+```yaml
+        command: ['sh', '-c', 'echo "<h1>Hello, Kubernetes!</h1>" > /usr/share/nginx/html/index.html && wget -qO- http://homework.otus/metrics &> /usr/share/nginx/html/metrics.html']
+```
+
+```console
+kubectl apply -f deployment.yaml  
+```
+перейти в один из контейнеров пода и убедиться что metrics.html возвращается
+```console
+kubectl exec -n homework homework-deployment-6f496bbbfb-8crf2  -it -- /bin/bash
+Defaulted container "web-server" out of: web-server, init-container (init)
+root@homework-deployment-6f496bbbfb-8crf2:/# curl localhost/metrics.html
+wget: bad address 'homework.otus'
+```
