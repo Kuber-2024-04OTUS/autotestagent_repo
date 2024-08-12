@@ -1,0 +1,26 @@
+replicaCount: 5
+
+image:
+  tag: "3.5.2"
+
+configurationOverrides:
+  # Configure Kafka for SASL_PLAINTEXT
+  "listeners": "SASL_PLAINTEXT://0.0.0.0:9092"
+  "advertised.listeners": "SASL_PLAINTEXT://{{ .Release.Name }}-0.{{ .Release.Namespace }}.svc.cluster.local:9092"
+  "listener.security.protocol.map": "SASL_PLAINTEXT:SASL_PLAINTEXT"
+  "security.inter.broker.protocol": "SASL_PLAINTEXT"
+  "sasl.enabled.mechanisms": "PLAIN"
+  "sasl.mechanism.inter.broker.protocol": "PLAIN"
+
+auth:
+  enabled: true
+  sasl:
+    enabled: true
+    mechanisms: "PLAIN"
+    jaas:
+      config: |
+        KafkaServer {
+          org.apache.kafka.common.security.plain.PlainLoginModule required
+          username="kafka"
+          password="kafka-secret";
+        };

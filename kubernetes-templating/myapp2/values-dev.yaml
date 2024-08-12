@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  tag: latest  # Используйте latest для установки последней версии Kafka
+
+configurationOverrides:
+  # Configure Kafka for PLAINTEXT
+  "listeners": "PLAINTEXT://0.0.0.0:9092"
+  "advertised.listeners": "PLAINTEXT://{{ .Release.Name }}-0.{{ .Release.Namespace }}.svc.cluster.local:9092"
+  "listener.security.protocol.map": "PLAINTEXT:PLAINTEXT"
+  "security.inter.broker.protocol": "PLAINTEXT"
+
+auth:
+  enabled: false  # Отключить авторизацию
