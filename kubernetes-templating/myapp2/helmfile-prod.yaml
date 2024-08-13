@@ -1,0 +1,7 @@
+releases:
+  - name: kafka
+    chart: bitnami/kafka
+    namespace: prod
+    version: 26.0.0 # ближайшая версия чарта к 3.5.2 это 26.0.0
+    values:
+      - values-prod.yaml

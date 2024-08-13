@@ -1,0 +1,7 @@
+releases:
+  - name: kafka
+    chart: bitnami/kafka
+    namespace: dev
+    version: 12.4.2 # Используйте подходящую версию чарта
+    values:
+      - values-dev.yaml
