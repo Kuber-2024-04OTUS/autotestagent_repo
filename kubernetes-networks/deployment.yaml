@@ -17,6 +17,13 @@ spec:
       labels:
         app: homework
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/infra: ""  
+      tolerations:
+        - key: "node-role"
+          operator: "Equal"
+          value: "infra"
+          effect: "NoSchedule"
       containers:
       - name: web-server
         image: nginx:latest
