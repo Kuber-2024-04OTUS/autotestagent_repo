@@ -1,0 +1,19 @@
+loki:
+  config:
+    auth_enabled: false
+  storage:
+    type: s3
+    config:
+      bucket_name: "otus-homework-bucket"
+      region: "ru-central1"
+      access_key_id: ajet8su155s2q51cjmpd
+      secret_access_key: "PLEASE DO NOT REMOVE THIS LINE! Yandex.Cloud SA Key ID \u003cajet8su155s2q51cjmpd\u003e\n-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCuzlnJvRMi0kqn\nq4atSM67Dxq78r+zH9AOhgLJh6nrAHv/vaeCd/54N/t5S3ONPhDnOUIhIItfkLOC\nDGXJLwWaNqhhRp5o3b2Asu6aBD3XPnutAQApOw6PjEZFzx652RK8hOusd4cnPQIG\noNmcwpzY7gsz+y+rvxFawiemdLiRHBYTDE63dfRS3igXxUTwQ4SHrTMGc1Le0kVu\neDstnPeBgqlY6FpFScZhrY4qlkZqMcmIK+JtHw98ucx7MdCrK4Nu2mQ+HCF5rdQ7\nSBfp4LWu2taaZGEBTx+02nHkA3yB9kttuMDqUN+/CEVcYT+kcGB2SbeevFzkvP9l\nRKcfsGC1AgMBAAECggEAE4jYVFjWh1zoPloG/Bzni1RqCKhdP1t2APV9YL+SH8Kn\nWMI9MrGNpKoe5mRl5poRwgEuUGzmXljZkpYnlsa0MdJbWTmO0Mm82GHGk7wXHBNt\ntzzmI3Vn0Gdc4AbAGIU3WI1jF9wopJwm+o4lm2TNKdnaMyYmIuOAgTuyuiGPkZma\nXmJL6ZZ9jfQ58QjKxNFXaymnhD93ksEX97kbuAlSi1Kre13J2iZ8ZdTNhlBiTcAo\n3pm/b58XJLtbnbMqoAL1TSO1QVxjugJiQ7rcRlsvGj6B7/vucRrcFPVdAbD/E6ai\neQ7Dkog6aJ6gfVw6FrvbSEi/kz5Uixfr/9UM+oX+aQKBgQDRPSQphSVBl7SdlMVm\ni0grRDSbBV/vRprm7aQcR4gky9etarQpANGnQR16w1PDHUL/9uMDQoZOQZnjclmT\nFx5ZQxbQPZb3MFKHQPm3gr9B5QQa8dpKguQGTZpNQDT5PQJhxC6JikJ6QOCc9Y90\nJ2sSQyVEreXpu+0juyaO6jF8zQKBgQDV30KbS5dGjoheRq1HCVXWnHjbv/2TJJAG\nMAujv3+iIEx26Kmvbhsj5WvJ/oefg1dVOF+DLcJZt/cvP3gYRn4cMcImDuGrgBnG\n8s3STdwcujORCkBV/OaAIgz/LNjFd/HEdrLa/PdoMshOXgnNjVQ7lxXymshIe3jy\n0mjweLbziQKBgA1AuSSkGUsBR+BfRu2KzuRmqopTGdN2/mK4FJfx8+6Ytq12P7kF\nI0JbvnlDG/AUz2SVB6XyNb2JLC0a1g+Z/EMdG7nO3NwFRITqmaaE8oZC8jKetPvZ\nNIYtriNMeM58jcURfv0ZM8K4j0GB0DdEM+TxOdASz6gxTgDgXr3YmY/VAoGAaK0Z\nIIDizXm9bMcS0A3VoXB8BrH1HitrAlxJlh+IDIXaZuiBBIfTaMJE+1xEbOIPwHoS\n5VVkJh1QMiPSV69I0evYpl/qO9I6y5DTA/dvn+/ShU6LJordFiGUUuBUSHHoNswR\nxfTB8pHIT/LewWhGrdPIvjDbjf5AuDgbfHbYtGECgYA8fPnvOsL6Mkch+SBR2MBb\nQ9id61JcT1B4DKc0JNvK4ZWVKgtWRS3UfqaKeWBRLGAgy3fEnAhbJfwCBmChhFZ1\nHOAmLUluB5NzY+2p/KZuDZTD4qqyGBMRousYKkU1gTSbBa/x6CZyRpbIo8lZs1CJ\nKW2c6G0LUz5zoD9MQ1bbGw==\n-----END PRIVATE KEY-----\n"
+
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+  #nodeSelector:
+  #  node-role: infra
