@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: promtail
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: promtail
+  template:
+    metadata:
+      labels:
+        app: promtail
+    spec:
+      containers:
+        - name: promtail
+          image: grafana/promtail:3.0.0
+          args:
+            - "--config.file=/etc/promtail/promtail-config.yaml"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/promtail
+              readOnly: true
+            - name: var-log
+              mountPath: /var/log
+          ports:
+            - containerPort: 9080
+      volumes:
+        - name: config-volume
+          configMap:
+            name: promtail-config
+        - name: var-log
+          hostPath:
+            path: /var/log
+            type: Directory
+      tolerations:
+        - key: "node-role.kubernetes.io/infra"
+          operator: "Exists"
+          effect: "NoSchedule"
+    #  nodeSelector:
+    #    role: infra
