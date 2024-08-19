@@ -5,12 +5,12 @@ metadata:
   namespace: homework
 spec:
   nodeSelector:
-        node-role.kubernetes.io/infra: ""  # Убедитесь, что эта метка есть на нужных нодах
-      tolerations:
-        - key: "node-role"
-          operator: "Equal"
-          value: "infra"
-          effect: "NoSchedule"
+    node-role.kubernetes.io/infra: ""  # Убедитесь, что эта метка есть на нужных нодах
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
   selector:
     app: homework
   ports:
