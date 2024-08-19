@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-templating-app
+  namespace: argocd
+spec:
+  project: otus
+  source:
+    repoURL: 'https://github.com/Kuber-2024-04OTUS/autotestagent_repo'
+    targetRevision: 'kubernetes-templating'  # Можно указать конкретную ветку
+    path: 'kubernetes-templating/myapp'  # Укажите путь к директории с Helm-чартом
+    helm:
+      parameters:
+        - name: replicaCount
+          value: "3"  # Укажите желаемое количество реплик
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: homeworkhelm  # Убедитесь, что namespace отличается от первого приложения
+  syncPolicy:
+    automated:
+      prune: true  # Удаление ресурсов, которые больше не указаны в Helm-чарте
+      selfHeal: true  # Автоматическое восстановление, если что-то выйдет из строя

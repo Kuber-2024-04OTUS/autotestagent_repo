@@ -1,0 +1,39 @@
+global:
+  image:
+    tag: v2.9.21
+
+server:
+  nodeSelector:
+    node-role.kubernetes.io/infra: ""
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+controller:
+  nodeSelector:
+    node-role.kubernetes.io/infra: ""
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+repoServer:
+  nodeSelector:
+    node-role.kubernetes.io/infra: ""
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+applicationSet: 
+  nodeSelector:
+    node-role.kubernetes.io/infra: ""
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"

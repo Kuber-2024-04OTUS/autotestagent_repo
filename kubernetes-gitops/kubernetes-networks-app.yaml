@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-networks-app
+  namespace: argocd
+spec:
+  project: otus
+  source:
+    repoURL: 'https://github.com/Kuber-2024-04OTUS/autotestagent_repo'
+    targetRevision: 'kubernetes-networks'  # Укажите здесь ветку
+    path: 'kubernetes-networks'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homework
+  syncPolicy:
+    automated: {}  
