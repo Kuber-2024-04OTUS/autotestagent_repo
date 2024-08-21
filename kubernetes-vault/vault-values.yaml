@@ -1,0 +1,16 @@
+server:
+  ha:
+    enabled: true
+    replicas: 3
+    raft:
+      enabled: false
+    consul:
+      address: "consul.consul.svc.cluster.local:8500"
+      path: "vault/"
+resources:
+  requests:
+    cpu: "500m"
+    memory: "512Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1024Mi"
